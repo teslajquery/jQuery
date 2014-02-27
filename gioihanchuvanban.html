@@ -3,13 +3,35 @@
 	<title> -- jQuery-- </title>
 	<script src="jquery.js"></script>
 	<style>
-		
+		$(function() {
+			vat limit =
+		});
 	</style>
 	<script>
-	
+	$(function() {
+		var limit = 120;
+		var txt = $(".abs").html();
+		var txtStart = txt.slice(0, limit).replace(/\w+$/,'');
+		var txtEnd = txt.slice(txtStart.length);
+		if ( txtEnd.replace(/\s+$/,'').split(' ').length > 4 ){
+			$(".abs").html([ txtStart + '<a href="#" class="more">Readmore</a>' + '<span class="detail">' +txtEnd + '</span>' + '<a href="#" class="hide">hide</a>'].join());
+		}
+		$(".detail").hide();
+		$(".hide").hide();
+		$(".more").bind('click', function() {
+			$(this).hide().next('.detail').show(1000).next(".hide").show();
+			return false;
+		});
+		$(".hide").bind('click', function() {
+			$(this).hide();
+			$(".detail").hide();
+			$(".more").show();
+			return false;
+		});
+	});
 	</script>
 </header>
 <body>
-	<div class="abs"><div>
+	<div class="abs">Curabitur aliquet quam id dui posuere blandit. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Proin eget tortor risus. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit. Vivamus suscipit tortor eget felis porttitor volutpat. Donec sollicitudin molestie malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Pellentesque in ipsum id orci porta dapibus. Donec sollicitudin molestie malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt.<div>
 </body>
 </html>
