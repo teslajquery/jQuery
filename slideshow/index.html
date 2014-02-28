@@ -1,0 +1,82 @@
+<html>
+<header>
+	<title> -- jQuery-- </title>
+	<script src="jquery.js"></script>
+	<style>
+		.item img{
+			width: 600px;
+			height: 300px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.next {
+			position: absolute;
+			left: 500px;
+			top: 350px;
+		}
+
+		.prev {
+			position: absolute;
+			left: 100px;
+			top: 350px;
+		}
+
+
+	</style>
+	<script>
+		$(function() {
+			// auto play va click next and prev
+			// add next buttom and prev buttom
+			$("body").append("<div class='next'>Next</div><div class='prev'>Prev</div>");
+			// only show first image.
+			$(".item").hide();
+			$(".item:first").show();
+			// click to ".next": this image fadeOut, next image fadeIn.
+			// neu anh hien tai > max item. stop
+			var size = $(".item").size();
+			
+			setInterval(function(){
+				$(".item:first").hide()
+				$(".item").hide();
+				$(".item:first").show();
+				$(".item:last").after("<div class='item'>" + $(".item:first").html() + "</div>");
+				$(".item:first").remove();
+				$(".item:first").show();
+				$(".item:last").hide();
+			},3000);
+			$(".next").bind("click", function() {
+				next();	
+			});
+			$(".prev").bind("click", function() {
+				prev();
+			});
+			function next() {
+				clearInterval();
+				$(".item").hide();
+				$(".item:first").show();
+				$(".item:last").after("<div class='item'>" + $(".item:first").html() + "</div>");
+				$(".item:first").remove();
+				$(".item:first").show();
+				$(".item:last").hide();
+			}
+			function prev() {
+				clearInterval();
+				$(".item:first").hide();
+				$(".item:first").before("<div class='item'>" + $(".item:last").html() + "</div>");
+				$(".item:last").remove();	
+				$(".item:first").show();
+			}
+		});
+	</script>
+</header>
+<body>
+	<div class="abs">
+		<div class="item 1"><img src="image/1.jpg"/></div>
+		<div class="item 2"><img src="image/2.jpg"/></div>
+		<div class="item 3"><img src="image/3.jpg"/></div>
+		<div class="item 4"><img src="image/4.jpg"/></div>
+	<div>
+</body>
+</html>
